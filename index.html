@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion‑Aware Recognition Platform</title>
+    <title>Plataforma de Reconocimiento Emocional</title>
     <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <!-- Import a Google Font for a modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script defer src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="script.js"></script>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <header class="navbar">
         <div class="container nav-inner">
-            <div class="logo">EMOZ</div>
+            <div class="logo">SENTIMOS</div>
             <nav class="nav-links">
-                <a href="#analysis">Demo</a>
-                <a href="#how-it-works">How&nbsp;It&nbsp;Works</a>
-                <a href="#privacy">Privacy</a>
+                <a href="#analysis">El Modelo</a>
+                <a href="#how-it-works">Cómo Funciona</a>
+                <a href="#privacy">Privacidad</a>
             </nav>
         </div>
     </header>
@@ -26,52 +28,55 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="overlay"></div>
-        <img src="hero.png" alt="Abstract face and emotion waves" class="hero-bg">
+        <img src="hero.png" alt="Rostro abstracto y ondas emocionales" class="hero-bg">
         <div class="hero-content">
-            <h1>When Your Face Speaks Truth, We Listen</h1>
-            <p class="subheading">AI that sees the sparkle, the stress, the vibe in your expression.</p>
-            <a href="#analysis" class="btn">Try Demo</a>
+            <h1>Tu Rostro y Tu Voz Interior,<br>Sincronizados</h1>
+            <p class="subheading">Comparamos tu <strong>Auto-reporte</strong> (Valencia y Energía) con la
+                <strong>Detección de IA</strong> para entender tu estado real.</p>
+            <a href="#how-it-works" class="btn">Conocer el Proceso</a>
         </div>
     </section>
 
-    <!-- Emotion Analysis Section -->
+    <!-- Russell Model Section -->
     <section id="analysis" class="section analysis">
         <div class="container analysis-inner">
             <div class="text">
-                <h2>Emotion Analysis</h2>
-                <p>Discover how you and your team feel, in real time. Our model assesses expressions—happy, calm, surprised and more—to build a 360° view of mood. Check in to see how you felt on arrival and when you leave.</p>
+                <h2>El Modelo de Russell</h2>
+                <p>Nuestra tecnología se basa en el Modelo Circunflejo de Russell, ubicando cada emoción en dos ejes
+                    fundamentales:</p>
                 <ul class="features-list">
-                    <li><strong>Real‑time Detection</strong> — instant feedback on your emotional state</li>
-                    <li><strong>Group Insights</strong> — view how classrooms or teams stack up</li>
-                    <li><strong>Historical Trends</strong> — track mood over days or weeks</li>
+                    <li><strong>Bienestar (Valencia)</strong> — Qué tan placentera es tu emoción (1-10).</li>
+                    <li><strong>Energía (Activación)</strong> — Qué tanta intensidad o "arousal" sientes (1-10).</li>
+                    <li><strong>Comparativa</strong> — Contrastamos cómo dices sentirte vs. lo que tu micro-expresión
+                        facial revela.</li>
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="dashboard.png" alt="Emotion dashboard illustration" class="analysis-img">
+                <img src="dashboard.png" alt="Gráfica comparativa del Modelo de Russell" class="analysis-img">
             </div>
         </div>
     </section>
 
-    <!-- Team Mood Section -->
+    <!-- Team Comparison Section -->
     <section class="section mood">
         <div class="container mood-inner">
-            <h2>Team Mood Board</h2>
-            <p class="mood-description">See which squad brings the most smiles, who needs support, and celebrate the peaks of joy together.</p>
+            <h2>Comparativa en Tiempo Real</h2>
+            <p class="mood-description">Visualiza la discrepancia o sintonía entre tu percepción interna y la lectura
+                externa.</p>
             <div class="mood-bars">
                 <div class="mood-row">
-                    <span class="team-name">Class&nbsp;A</span>
-                    <div class="bar"><div class="fill" style="width: 65%;"></div></div>
-                    <span class="value">65%</span>
+                    <span class="team-name">Usuario</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 80%; background: #9999FF;"></div>
+                    </div>
+                    <span class="value">Auto</span>
                 </div>
                 <div class="mood-row">
-                    <span class="team-name">Dev&nbsp;Team</span>
-                    <div class="bar"><div class="fill" style="width: 48%;"></div></div>
-                    <span class="value">48%</span>
-                </div>
-                <div class="mood-row">
-                    <span class="team-name">Marketing</span>
-                    <div class="bar"><div class="fill" style="width: 82%;"></div></div>
-                    <span class="value">82%</span>
+                    <span class="team-name">IA</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 65%; background: #ec4899;"></div>
+                    </div>
+                    <span class="value">Detec</span>
                 </div>
             </div>
         </div>
@@ -80,22 +85,23 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="section how-it-works">
         <div class="container how-inner">
-            <h2>How It Works</h2>
+            <h2>Flujo de Detección</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Capture</h3>
-                    <p>Every session begins with a camera snapshot or video feed. Our system captures facial landmarks to analyze expressions.</p>
+                    <h3>Auto-reporte</h3>
+                    <p>Ingresas tu nivel de <strong>Bienestar</strong> y <strong>Energía</strong> del 1 al 10.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Decode</h3>
-                    <p>We run deep neural networks on‑device to map your expression to emotions like joy, calm, surprise or stress.</p>
+                    <h3>Escaneo Facial</h3>
+                    <p>Nuestra cámara captura 68 puntos faciales y analiza micro-expresiones con Deep Learning.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Insights</h3>
-                    <p>Aggregated results show individual feelings and team trends, enabling leaders to nurture well‑being.</p>
+                    <h3>Análisis Russell</h3>
+                    <p>Graficamos ambos puntos en el plano cartesiano para encontrar tu emoción real (Ej. Felicidad,
+                        Calma, Estrés).</p>
                 </div>
             </div>
         </div>
@@ -104,21 +110,25 @@
     <!-- Privacy & Ethics Section -->
     <section id="privacy" class="section privacy">
         <div class="container privacy-inner">
-            <h2>Privacy & Ethics</h2>
-            <p>We respect your emotional data. All processing occurs locally—no raw images leave your device. Results are anonymized before being aggregated into group insights. Our models focus on expressions, not mind‑reading. We acknowledge cultural bias and continuously audit for fairness.</p>
+            <h2>Privacidad y Ética</h2>
+            <p>Respetamos tus datos emocionales. Todo el procesamiento ocurre localmente—ninguna imagen sale de tu
+                dispositivo. Los resultados son anonimizados antes de ser agregados. Nuestros modelos se enfocan en
+                expresiones, no en leer la mente. Reconocemos sesgos culturales y auditamos continuamente para asegurar
+                justicia.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">
-            <p>© 2025 EMOZ. Feel the rhythm of work, learn in empathy.</p>
+            <p>© 2025 EMOZ. Siente el ritmo del trabajo, aprende con empatía.</p>
             <nav class="footer-nav">
                 <a href="#analysis">Demo</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#privacy">Privacy</a>
+                <a href="#how-it-works">Cómo Funciona</a>
+                <a href="#privacy">Privacidad</a>
             </nav>
         </div>
     </footer>
 </body>
+
 </html>
