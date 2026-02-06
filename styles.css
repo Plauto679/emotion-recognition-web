@@ -118,6 +118,8 @@ a {
   text-align: center;
   overflow: hidden;
   padding-top: 80px;
+  isolation: isolate;
+  /* Force stacking context so negatives are contained */
 }
 
 /* Background Gradients */
@@ -129,10 +131,13 @@ a {
   width: 50%;
   height: 50%;
   background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-  opacity: 0.2;
+  opacity: 0.15;
+  /* Subtle overlay */
   filter: blur(100px);
   z-index: -1;
+  /* Above image, below content */
   animation: floatOrb 10s infinite alternate;
+  pointer-events: none;
 }
 
 .hero::after {
@@ -143,10 +148,12 @@ a {
   width: 50%;
   height: 50%;
   background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
-  opacity: 0.2;
+  opacity: 0.15;
+  /* Subtle overlay */
   filter: blur(100px);
   z-index: -1;
   animation: floatOrb 12s infinite alternate-reverse;
+  pointer-events: none;
 }
 
 @keyframes floatOrb {
@@ -167,21 +174,37 @@ a {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  opacity: 0.3;
-  /* Adjusted for readability */
-  filter: blur(2px);
-  /* Optional: adds depth */
+  /* Background layer */
+  opacity: 1;
+  /* Fully visible, let the overlay dim it if needed or use .5 */
+  filter: none;
+  /* Clear image */
+}
+
+/* Add a dark overlay on top of the image to ensure text contrast */
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  /* Dark tint */
+  z-index: -1;
+  /* Same level as gradients, above image */
 }
 
 .hero-content {
   max-width: 800px;
   padding: 2rem;
   z-index: 1;
-  background: rgba(15, 23, 42, 0.4);
-  /* Slight backing for text contrast */
-  backdrop-filter: blur(4px);
+  /* Content on top */
+  background: rgba(15, 23, 42, 0.3);
+  /* Subtle glass backing */
+  backdrop-filter: blur(8px);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
@@ -356,29 +379,50 @@ p {
 }
 
 .value {
-  width: 60px;
+  width: 160px;
+  /* Increased to fit "Micro-expresiones" */
   text-align: right;
   font-weight: 600;
   color: #fff;
+  white-space: nowrap;
+  /* Prevent wrapping */
 }
 
 /* How it works */
 .steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+/* Connecting Line Background */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 1.75rem;
+  /* Center with step-number height (3.5rem / 2) */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
 }
 
 .step {
-  padding: 2.5rem;
+  flex: 1;
+  padding: 1.5rem;
   background: var(--bg-card);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+  margin: 0 0.5rem;
 }
 
 .step:hover {
@@ -399,18 +443,68 @@ p {
   font-weight: 800;
   font-size: 1.25rem;
   margin: 0 auto 1.5rem;
-  box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 0 0 8px var(--bg-dark), 0 5px 15px rgba(236, 72, 153, 0.3);
+  /* dark ring to simulate spacing from line */
+  position: relative;
+  z-index: 2;
 }
 
 .step h3 {
   color: #fff;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+  min-height: 3rem;
+  /* Align titles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .step p {
   font-size: 0.95rem;
   color: #9ca3af;
+  line-height: 1.5;
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 900px) {
+  .steps {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .steps::before {
+    top: 0;
+    left: 1.75rem;
+    /* Center with number width */
+    width: 2px;
+    height: 100%;
+  }
+
+  .step-number {
+    margin: 0 0 1rem 0;
+    /* Adjust margin for vertical alignment */
+  }
+
+  .step {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    margin: 0;
+    /* reset margin */
+  }
+
+  .step h3 {
+    min-height: auto;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* Privacy */
